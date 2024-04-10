@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://bn5yge8ckq24w"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_vqp7x"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_k38x3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0p8k8"]
+albedo_color = Color(1, 0, 0.054902, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_xgf08"]
+material = SubResource("StandardMaterial3D_0p8k8")
+size = Vector3(0.25, 0.25, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q86qf"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_88egx"]
+material = SubResource("StandardMaterial3D_q86qf")
+size = Vector3(1.947, 1, 0.689)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vtsk5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbalb"]
+size = Vector3(1.94678, 1, 0.688995)
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_vqp7x")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="main_body" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
+mesh = SubResource("PrismMesh_k38x3")
+
+[node name="red_arrow" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.520508, -0.328078)
+mesh = SubResource("PrismMesh_xgf08")
+
+[node name="hitbox_detect" type="MeshInstance3D" parent="Pivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.844)
+visible = false
+mesh = SubResource("BoxMesh_88egx")
+
+[node name="player_hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_vtsk5")
+
+[node name="attack_hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.844)
+shape = SubResource("BoxShape3D_nbalb")
