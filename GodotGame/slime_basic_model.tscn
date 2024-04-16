@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu0q23yvo48ou"]
+
+[ext_resource type="PackedScene" uid="uid://d1efhkvhpti3f" path="res://SlimeBasicModel.glb" id="1_uowpw"]
+
+[node name="SlimeBasicModel" instance=ExtResource("1_uowpw")]
